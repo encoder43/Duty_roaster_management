@@ -1,0 +1,27 @@
+{% extends 'emp_base.html' %}
+
+{% block leave %}
+<html>
+<head>
+  <title>Leave Requests</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+</head>
+<body>
+  <div class="container">
+    <h1>Leave Requests</h1>
+    <ul class="list-unstyled">
+      {% for leave_request in leave_requests %}
+        <li>
+          <strong>{{ leave_request.employee.name }}</strong>
+          <strong>{{ leave_request.start_date }}</strong> to <strong>{{ leave_request.end_date }}</strong>
+          {{ leave_request.reason }}
+          <strong>{{ leave_request.status }}</strong>
+        </li>
+      {% endfor %}
+    </ul>
+    <a href="/submit_leave_request/">Submit a new leave request</a>
+  </div>
+</body>
+</html>
+{%endblock %}

@@ -1,0 +1,106 @@
+{% extends 'sup_base.html' %}
+
+{% block assign_duties %}
+<div class="container">
+    <h1>Assign Duties</h1>
+    <form method="POST" action="{% url 'assign_duties' %}">
+        {% csrf_token %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Shift</th>
+                    <th>Zone</th>
+                    <th>Duties</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in EmployeeDetails %}
+                    <tr>
+                        <td>{{ employee.name }}</td>
+                        <td>
+                            <input type="radio" name="shift" value="general"> General
+                            <input type="radio" name="shift" value="morning"> Morning
+                            <input type="radio" name="shift" value="afternoon"> Afternoon
+                            <input type="radio" name="shift" value="night"> Night
+                        </td>
+                        <td>
+                            <input type="radio" name="zone" value="north"> North
+                            <input type="radio" name="zone" value="south"> South
+                            <input type="radio" name="zone" value="east"> East
+                            <input type="radio" name="zone" value="west"> West
+                        </td>
+                        <td>
+                            <input type="checkbox" name="duties[]" value="1"> Duty 1
+                            <input type="checkbox" name="duties[]" value="2"> Duty 2
+                            <input type="checkbox" name="duties[]" value="3"> Duty 3
+                        </td>
+                    </tr>
+                {% endfor %}
+                <!-- Manually filled rows with random names -->
+                <tr>
+                    <td>John Doe 1</td>
+                    <td>
+                        <input type="radio" name="shift" value="general"> General
+                        <input type="radio" name="shift" value="morning"> Morning
+                        <input type="radio" name="shift" value="afternoon"> Afternoon
+                        <input type="radio" name="shift" value="night"> Night
+                    </td>
+                    <td>
+                        <input type="radio" name="zone" value="north"> North
+                        <input type="radio" name="zone" value="south"> South
+                        <input type="radio" name="zone" value="east"> East
+                        <input type="radio" name="zone" value="west"> West
+                    </td>
+                    <td>
+                        <input type="checkbox" name="duties[]" value="1"> Duty 1
+                        <input type="checkbox" name="duties[]" value="2"> Duty 2
+                        <input type="checkbox" name="duties[]" value="3"> Duty 3
+                    </td>
+                </tr>
+                <tr>
+                    <td>John Doe 2</td>
+                    <td>
+                        <input type="radio" name="shift" value="general"> General
+                        <input type="radio" name="shift" value="morning"> Morning
+                        <input type="radio" name="shift" value="afternoon"> Afternoon
+                        <input type="radio" name="shift" value="night"> Night
+                    </td>
+                    <td>
+                        <input type="radio" name="zone" value="north"> North
+                        <input type="radio" name="zone" value="south"> South
+                        <input type="radio" name="zone" value="east"> East
+                        <input type="radio" name="zone" value="west"> West
+                    </td>
+                    <td>
+                        <input type="checkbox" name="duties[]" value="1"> Duty 1
+                        <input type="checkbox" name="duties[]" value="2"> Duty 2
+                        <input type="checkbox" name="duties[]" value="3"> Duty 3
+                    </td>
+                </tr>
+                <tr>
+                    <td>John Doe 3</td>
+                    <td>
+                        <input type="radio" name="shift" value="general"> General
+                        <input type="radio" name="shift" value="morning"> Morning
+                        <input type="radio" name="shift" value="afternoon"> Afternoon
+                        <input type="radio" name="shift" value="night"> Night
+                    </td>
+                    <td>
+                        <input type="radio" name="zone" value="north"> North
+                        <input type="radio" name="zone" value="south"> South
+                        <input type="radio" name="zone" value="east"> East
+                        <input type="radio" name="zone" value="west"> West
+                    </td>
+                    <td>
+                        <input type="checkbox" name="duties[]" value="1"> Duty 1
+                        <input type="checkbox" name="duties[]" value="2"> Duty 2
+                        <input type="checkbox" name="duties[]" value="3"> Duty 3
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Assign Duties</button>
+    </form>
+</div>
+{% endblock %}

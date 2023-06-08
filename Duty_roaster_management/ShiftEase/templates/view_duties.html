@@ -1,0 +1,38 @@
+{% extends 'emp_base.html' %}
+
+{% block view_duties %}
+<div class="container">
+    <h1>View Duties</h1>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Employee Name</th>
+                <th>Shift</th>
+                <th>Zone</th>
+                <th>Duties</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Manually filled rows with random names -->
+            <tr>
+                <td>John Doe</td>
+                <td>Morning</td>
+                <td>North</td>
+                <td>Duty 1, Duty 3</td>
+            </tr>
+            <tr>
+                <td>Jane Smith</td>
+                <td>Afternoon</td>
+                <td>South</td>
+                <td>Duty 2, Duty 3</td>
+            </tr>
+            <tr>
+                <td>David Johnson</td>
+                <td>Night</td>
+                <td>East</td>
+                <td>Duty 1, Duty 2</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

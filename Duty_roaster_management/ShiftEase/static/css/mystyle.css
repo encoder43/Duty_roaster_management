@@ -1,0 +1,20 @@
+.nav-link {
+    color: white !important;
+}
+
+.nav-link:hover {
+    color: yellow !important;
+    background-color: green;
+    border-radius: 15px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+.home {
+  background-image: url("static/images/home.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+

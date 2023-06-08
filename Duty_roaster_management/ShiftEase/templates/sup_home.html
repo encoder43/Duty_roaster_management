@@ -1,0 +1,28 @@
+{% extends 'sup_base.html' %}
+
+{% block sup %}
+<h4 class="text-danger p-2" style="border-bottom: 2px solid yellow">Supervisor Dashboard</h4>
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="text-danger p-2" style="border-bottom: 2px solid yellow">Attendance Records</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Employee Name</th>
+                    <th scope="col">Attendance Status</th>
+                    <th scope="col">Attendance Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for Attendance in Attendance %}
+                <tr>
+                    <td>{{ request.user.first_name }} {{ request.user.last_name }}</td>
+                    <td>{{ attendance.status }}</td>
+                    <td>{{ attendance.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

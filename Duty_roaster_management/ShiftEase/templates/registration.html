@@ -1,0 +1,82 @@
+{% include 'header.html' %}
+
+<script>
+    function checkpassword()
+    {
+    if(document.signup.pwd.value!=document.signup.cpwd.value)
+    {
+    alert('Password doesn't match');
+    document.signup.cpwd.focus();
+    return false
+    }
+    return true;
+    }
+</script>
+
+
+
+<div class="card shadow m-5">
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom :2px solid green" >Create an Account</h5>
+
+        <div class="container-fluid">
+            <form method="POST" name="signup" onsubmit="return checkpassword()">
+                {%csrf_token%}
+                <div class="form-row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" name="firstname" class="form-control" placeholder="First Name" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" name="lastname" class="form-control" placeholder="Last Name" pattern="[A-Za-z]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Employee Code</label>
+                            <input type="text" name="empcode" class="form-control" placeholder="Employee Code" pattern="[A-Z0-9]+" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="pwd" name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" placeholder="Password" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" id="cpwd" name="cpwd" class="form-control" placeholder="re-enter Password" required>
+                        </div>
+                    </div>
+
+                </div>
+                <br>
+                <input type="Submit" value="Submit" class="m-2 px-3 btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+<script>
+    alert("SignUp Successful");
+     window.location=('{% url 'emp_login' %}');
+</script>
+{% endif %}
+{% if error == "yes" %}
+<script>
+    alert("Something went wrong,Try again.....");
+     window.location=('{% url 'emp_login' %}');
+</script>
+{% endif %}

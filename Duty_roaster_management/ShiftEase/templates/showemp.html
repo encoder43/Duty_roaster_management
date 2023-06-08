@@ -1,0 +1,82 @@
+{% extends 'sup_base.html' %}
+
+{% block show_emp %}
+  <form method="post">
+    {% csrf_token %}
+    <table class="table">
+      <thead class="bg-danger text-white">
+        <tr>
+          <th>user</th>
+          <th>empcode</th>
+          <th>empdept</th>
+          <th>designation</th>
+          <th>contact</th>
+          <th>gender</th>
+          <th>supervisorcode</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for employee in EmployeeDetail %}
+        <tr>
+          <td><input type="text" name="user" value="{{ employee.user }}"></td>
+          <td><input type="text" name="empcode" value="{{ employee.empcode }}"></td>
+          <td><input type="text" name="empdept" value="{{ employee.empdept }}"></td>
+          <td><input type="text" name="designation" value="{{ employee.designation }}"></td>
+          <td><input type="text" name="contact" value="{{ employee.contact }}"></td>
+          <td><input type="text" name="gender" value="{{ employee.gender }}"></td>
+          <td><input type="text" name="supervisorcode" value="{{ employee.supervisorcode }}"></td>
+          <td>
+            <button class="btn-danger btn-sm" onclick="location.href='/deleteEmp/{{ employee.eFname }}'">Delete</button>
+            <button class="btn-success btn-sm" onclick="location.href='/editemp/{{ employee.eFname }}'">Update</button>
+          </td>
+        </tr>
+        {% endfor %}
+
+        <!-- Manually filled rows with random names -->
+        <tr>
+          <td><input type="text" name="user" value="John Doe 1"></td>
+          <td><input type="text" name="empcode" value="EMP1"></td>
+          <td><input type="text" name="empdept" value="Dept 1"></td>
+          <td><input type="text" name="designation" value="Manager"></td>
+          <td><input type="text" name="contact" value="123456789"></td>
+          <td><input type="text" name="gender" value="Male"></td>
+          <td><input type="text" name="supervisorcode" value="SUP1"></td>
+          <td>
+            <button class="btn-danger btn-sm" onclick="location.href='/deleteEmp/John Doe 1'">Delete</button>
+            <button class="btn-success btn-sm" onclick="location.href='/editemp/John Doe 1'">Update</button>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" name="user" value="John Doe 2"></td>
+          <td><input type="text" name="empcode" value="EMP2"></td>
+          <td><input type="text" name="empdept" value="Dept 2"></td>
+          <td><input type="text" name="designation" value="Manager"></td>
+          <td><input type="text" name="contact" value="123456789"></td>
+          <td><input type="text" name="gender" value="Male"></td>
+          <td><input type="text" name="supervisorcode" value="SUP2"></td>
+          <td>
+            <button class="btn-danger btn-sm" onclick="location.href='/deleteEmp/John Doe 2'">Delete</button>
+            <button class="btn-success btn-sm" onclick="location.href='/editemp/John Doe 2'">Update</button>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="text" name="user" value="John Doe 3"></td>
+          <td><input type="text" name="empcode" value="EMP3"></td>
+          <td><input type="text" name="empdept" value="Dept 3"></td>
+          <td><input type="text" name="designation" value="Manager"></td>
+          <td><input type="text" name="contact" value="123456789"></td>
+          <td><input type="text" name="gender" value="Male"></td>
+          <td><input type="text" name="supervisorcode" value="SUP3"></td>
+          <td>
+            <button class="btn-danger btn-sm" onclick="location.href='/deleteEmp/John Doe 3'">Delete</button>
+            <button class="btn-success btn-sm" onclick="location.href='/editemp/John Doe 3'">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

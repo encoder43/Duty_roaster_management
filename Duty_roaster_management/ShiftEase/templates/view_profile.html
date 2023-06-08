@@ -1,0 +1,70 @@
+{% extends 'emp_base.html' %}
+
+{% load static %}
+
+{% block main %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h4>Employee Profile</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <img src="{{ user.employee_detail.profile_pic.url }}" alt="Profile Picture" class="img-fluid rounded-circle mb-2" style="max-width: 150px;">
+            </div>
+            <div class="col-md-8">
+              <h5 class="card-title">{{ user.first_name }} {{ user.last_name }}</h5>
+              <hr>
+              {% if emp_details %}
+              <p class="card-text"><strong>Employee Code:</strong> {{ emp_details.empcode }}</p>
+              <p class="card-text"><strong>Department:</strong> {{ emp_details.empdept }}</p>
+              <p class="card-text"><strong>Designation:</strong> {{ emp_details.designation }}</p>
+              <p class="card-text"><strong>Contact Number:</strong> {{ emp_details.contact }}</p>
+              <p class="card-text"><strong>Gender:</strong> {{ emp_details.gender }}</p>
+              <p class="card-text"><strong>Supervisor Code:</strong> {{ emp_details.supervisorcode }}</p>
+              {% else %}
+              <p>No employee details found for this user.</p>
+              {% endif %}
+
+
+              <hr>
+              <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .card {
+    margin-top: 20px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  .card-header {
+    border-bottom: 2px solid #dee2e6;
+  }
+  .card-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  .card-text {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  .btn-primary {
+    background-color: #1e88e5;
+    border: none;
+  }
+  .btn-primary:hover {
+    background-color: #0d47a1;
+  }
+</style>
+{% endblock %}
